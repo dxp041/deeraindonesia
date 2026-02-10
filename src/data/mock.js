@@ -75,6 +75,16 @@ export const catalogMock = [
     image: "/mock/D-28-BLD.webp",
   },
   {
+    kode: "D-27-JB",
+    nama: "Jetblack x Jasmine",
+    image: "/mock/D-27-JB.webp",
+  },
+  {
+    kode: "D-26-JB",
+    nama: "Jetblack x Jasmine",
+    image: "/mock/D-26-JB.webp",
+  },
+  {
     kode: "D-25-JB",
     nama: "Jetblack x Jasmine",
     image: "/mock/D-25-JB.webp",
@@ -98,6 +108,11 @@ export const catalogMock = [
     kode: "D-18-JB",
     nama: "Jetblack x Jasmine",
     image: "/mock/D-18-JB.webp",
+  },
+  {
+    kode: "D-17-JB",
+    nama: "Jetblack x Jasmine",
+    image: "/mock/D-17-JB.webp",
   },
   {
     kode: "D-16-JB",

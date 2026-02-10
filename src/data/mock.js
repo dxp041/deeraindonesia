@@ -75,14 +75,14 @@ export const catalogMock = [
     image: "/mock/D-28-BLD.webp",
   },
   {
-    kode: "D-27-JB",
+    kode: "D-27-BLD",
     nama: "Jetblack x Jasmine",
-    image: "/mock/D-27-JB.webp",
+    image: "/mock/D-27-BLD.webp",
   },
   {
-    kode: "D-26-JB",
+    kode: "D-26-BLD",
     nama: "Jetblack x Jasmine",
-    image: "/mock/D-26-JB.webp",
+    image: "/mock/D-26-BLD.webp",
   },
   {
     kode: "D-25-JB",

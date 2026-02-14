@@ -1,4 +1,4 @@
-import { WhatsAppIcon } from "../svg/WhatsApp";
+import { WhatsApp } from "../svg/WhatsApp";
 
 export default function Modal({ open, onClose }) {
   if (!open) return null;
@@ -71,7 +71,7 @@ export default function Modal({ open, onClose }) {
           rel="noopener noreferrer"
           className="flex items-center justify-center w-full gap-3 py-3 transition border border-white/30 hover:border-white"
         >
-          <WhatsAppIcon className="w-5 h-5 text-green-500" />
+          <WhatsApp className="w-5 h-5 text-green-500" />
           <span className="text-sm tracking-widest">
             CONTACT US VIA WHATSAPP
           </span>

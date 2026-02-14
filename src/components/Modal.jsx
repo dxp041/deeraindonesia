@@ -32,7 +32,10 @@ export default function Modal({ open, onClose }) {
           <div>
             <p className="mb-1 text-white">Pasar Tasik Cideng</p>
             <p>
+              <br />
               Jl. Cideng Timur, RT 5 RW 1.
+              <br />
+              Gg. 8 Zona C, Samping Pom Bensin
               <br />
               Petojo Selatan, Kecamatan Gambir
               <br />

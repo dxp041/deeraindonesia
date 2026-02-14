@@ -1,4 +1,4 @@
-export function WhatsAppIcon({ className }) {
+export function WhatsApp({ className }) {
   return (
     <svg
       viewBox="0 0 32 32"

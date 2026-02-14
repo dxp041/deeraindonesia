@@ -1,4 +1,4 @@
-import { WhatsAppIcon } from "../svg/WhatsappIcon";
+import { WhatsAppIcon } from "../svg/WhatsApp";
 
 export default function Modal({ open, onClose }) {
   if (!open) return null;

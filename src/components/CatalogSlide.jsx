@@ -44,7 +44,7 @@ export default function CatalogSlide({ model, isLast }) {
           src={model.image}
           alt=""
           aria-hidden
-          className="object-cover w-full h-full scale-110 blur-sm opacity-90"
+          className="object-cover object-[50%_10%] w-full h-full  blur-sm opacity-90"
         />
         <div className="absolute inset-0 bg-black/55" />
       </div>
@@ -53,10 +53,14 @@ export default function CatalogSlide({ model, isLast }) {
       <div className="relative z-10 hidden md:flex md:flex-col md:justify-end md:pb-24 md:pl-20">
         <p
           className="
-            font-editorial
-            text-white/80
-            text-[28px]
-            tracking-[0.3em]
+         font-editorial
+    text-white/80
+    text-[28px]
+
+    md:text-[44px]
+    md:font-medium
+
+    tracking-[0.3em]
           "
         >
           {model.kode}
@@ -64,11 +68,15 @@ export default function CatalogSlide({ model, isLast }) {
 
         <p
           className="
-            mt-4
-            font-editorial
-            text-white/50
-            text-sm
-            tracking-[0.2em]
+                mt-4
+    font-editorial
+    text-white/50
+    text-sm
+
+    md:text-base
+    md:font-normal
+
+    tracking-[0.22em]
           "
         >
           {model.nama}

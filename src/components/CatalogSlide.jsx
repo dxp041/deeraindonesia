@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 
 export default function CatalogSlide({ model, isLast }) {
   const ref = useRef(null);
-
   const isFirst = model.index === 0;
   const [active, setActive] = useState(isFirst);
 
@@ -11,7 +10,10 @@ export default function CatalogSlide({ model, isLast }) {
       ([entry]) => {
         setActive(entry.isIntersecting);
       },
-      { threshold: 0.6, rootMargin: "-10% 0px -10% 0px" },
+      {
+        threshold: 0.6,
+        rootMargin: "-10% 0px -10% 0px",
+      },
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -21,87 +23,119 @@ export default function CatalogSlide({ model, isLast }) {
   return (
     <section
       ref={ref}
-      className="relative w-full h-screen snap-start bg-black overflow-hidden"
+      className="
+        relative
+        w-full
+        h-screen
+        snap-start
+        bg-black
+        overflow-hidden
+
+        md:h-auto
+        md:min-h-screen
+        md:grid
+        md:grid-cols-[1fr_2fr]
+        md:items-center
+      "
     >
-      {/* IMAGE */}
-      <img
-        src={model.image}
-        alt={model.nama}
-        loading={isFirst ? "eager" : "lazy"}
-        fetchpriority={isFirst ? "high" : "auto"}
-        decoding="async"
-        sizes="100vw"
-        className={`
-          absolute inset-0 w-full h-full object-cover
-          transition-opacity duration-[800ms] ease-in-out
-          ${active ? "opacity-100" : "opacity-0"}
-        `}
-      />
+      {/* ================= BLURRED BACKGROUND (DESKTOP ONLY) ================= */}
+      <div className="absolute inset-0 z-0 hidden overflow-hidden md:block">
+        <img
+          src={model.image}
+          alt=""
+          aria-hidden
+          className="object-cover w-full h-full scale-110 blur-sm opacity-90"
+        />
+        <div className="absolute inset-0 bg-black/55" />
+      </div>
 
-      {/* FILM GRAIN */}
-      <div
-        className="
-          pointer-events-none
-          absolute inset-0
-          bg-[url('/noise.webp')]
-          opacity-[0.035]
-          mix-blend-overlay
-        "
-      />
-
-      {/* OVERLAY */}
-      <div className="absolute bottom-0 left-0 w-full">
-        <div
+      {/* ================= LEFT TEXT (DESKTOP EDITORIAL) ================= */}
+      <div className="relative z-10 hidden md:flex md:flex-col md:justify-end md:pb-24 md:pl-20">
+        <p
           className="
-         bg-gradient-to-t
-    from-black/60
-    via-black/30
-    to-transparent
-    px-7
-    pt-40
-    pb-20
-        "
+            font-editorial
+            text-white/80
+            text-[28px]
+            tracking-[0.3em]
+          "
         >
-          {/* CODE – PRIMARY */}
+          {model.kode}
+        </p>
+
+        <p
+          className="
+            mt-4
+            font-editorial
+            text-white/50
+            text-sm
+            tracking-[0.2em]
+          "
+        >
+          {model.nama}
+        </p>
+
+        <div className="w-24 h-px mt-10 bg-white/20" />
+      </div>
+
+      {/* ================= IMAGE (HERO) ================= */}
+      <div className="relative z-10 w-full h-full md:flex md:items-center md:justify-center">
+        <img
+          src={model.image}
+          alt={model.nama}
+          loading={isFirst ? "eager" : "lazy"}
+          fetchpriority={isFirst ? "high" : "auto"}
+          decoding="async"
+          sizes="100vw"
+          className={`
+            absolute inset-0
+            w-full h-full
+            object-cover
+
+            md:static
+            md:h-[90vh]
+            md:w-auto
+            md:object-contain
+
+            transition-opacity
+            duration-[800ms]
+            ease-in-out
+            ${active ? "opacity-100" : "opacity-0"}
+          `}
+        />
+      </div>
+
+      {/* ================= MOBILE OVERLAY ================= */}
+      <div className="absolute bottom-0 left-0 z-10 w-full md:hidden">
+        <div className="pt-40 pb-20 bg-gradient-to-t from-black/60 via-black/30 to-transparent px-7">
           <p
             className="
-  font-editorial
-  text-white/80
-  text-[24px]
-  font-medium
-  tracking-[0.25em]
-"
+              font-editorial
+              text-white/80
+              text-[24px]
+              tracking-[0.25em]
+            "
           >
             {model.kode}
           </p>
 
-          {/* NAME – SECONDARY */}
           <p
             className="
-  mt-2
-  font-editorial
-  text-white/45
-  text-xs
-  font-light
-  tracking-[0.15em]
-"
+              mt-2
+              font-editorial
+              text-white/45
+              text-xs
+              tracking-[0.15em]
+            "
           >
             {model.nama}
           </p>
         </div>
       </div>
 
-      {/* SCROLL INDICATOR */}
+      {/* ================= SCROLL INDICATOR (MOBILE) ================= */}
       {!isLast && (
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2">
-          <div
-            className="
-            w-1 h-1
-            rounded-full
-            bg-white/40
-            animate-pulse
-          "
-          />
+        <div className="absolute z-10 -translate-x-1/2 bottom-5 left-1/2 md:hidden">
+          <div className="w-1 h-1 rounded-full bg-white/40 animate-pulse" />
         </div>
       )}
     </section>
